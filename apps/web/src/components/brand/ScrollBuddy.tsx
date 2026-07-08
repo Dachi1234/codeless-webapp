@@ -37,20 +37,31 @@ export function ScrollBuddy() {
     const target = { x: 0, y: 0 };
     let raf = 0;
 
-    const onMove = (e: MouseEvent) => {
-      if (reduced) return;
+    const aim = (px: number, py: number) => {
       const el = cardRef.current;
       if (!el) return;
       const r = el.getBoundingClientRect();
       const cx = r.left + r.width / 2;
       const cy = r.top + r.height / 2;
-      const dx = e.clientX - cx;
-      const dy = e.clientY - cy;
+      const dx = px - cx;
+      const dy = py - cy;
       const d = Math.hypot(dx, dy) || 1;
       const max = 1.9; // travel in viewBox units
       const strength = Math.min(1, d / 240);
       target.x = (dx / d) * max * strength;
       target.y = (dy / d) * max * strength;
+    };
+
+    const onMove = (e: MouseEvent) => {
+      if (reduced) return;
+      aim(e.clientX, e.clientY);
+    };
+
+    // Phones have no cursor: track the active touch point instead.
+    const onTouch = (e: TouchEvent) => {
+      if (reduced) return;
+      const t = e.touches[0];
+      if (t) aim(t.clientX, t.clientY);
     };
 
     const tick = () => {
@@ -69,9 +80,13 @@ export function ScrollBuddy() {
     };
 
     window.addEventListener("mousemove", onMove);
+    window.addEventListener("touchmove", onTouch, { passive: true });
+    window.addEventListener("touchstart", onTouch, { passive: true });
     raf = requestAnimationFrame(tick);
     return () => {
       window.removeEventListener("mousemove", onMove);
+      window.removeEventListener("touchmove", onTouch);
+      window.removeEventListener("touchstart", onTouch);
       cancelAnimationFrame(raf);
     };
   }, [reduced]);
@@ -145,16 +160,17 @@ export function ScrollBuddy() {
   }, [excited, reduced]);
 
   return (
-    // Outer element owns the vertical centering so framer's transform on the
-    // inner element doesn't clobber it.
-    <div className="pointer-events-none fixed left-0 top-1/2 z-40 hidden -translate-y-1/2 lg:block">
+    // Outer element owns the positioning (bottom-right on mobile so it clears
+    // the left-aligned content, left-centre on desktop) so framer's transform
+    // on the inner element doesn't clobber it.
+    <div className="pointer-events-none fixed bottom-4 right-3 z-40 lg:bottom-auto lg:left-4 lg:right-auto lg:top-1/2 lg:-translate-y-1/2">
       <motion.div
         ref={cardRef}
         initial={false}
         animate={
           visible
-            ? { x: 26, opacity: 1, scale: excited ? 1.06 : 1 }
-            : { x: -120, opacity: 0, scale: 0.8 }
+            ? { y: 0, opacity: 1, scale: excited ? 1.06 : 1 }
+            : { y: 32, opacity: 0, scale: 0.8 }
         }
         transition={{ type: "spring", stiffness: 300, damping: 24 }}
       >
@@ -164,11 +180,11 @@ export function ScrollBuddy() {
           className="relative"
         >
           <div className="absolute inset-0 -z-10 rounded-full bg-orange/30 blur-3xl" />
-          <div className="flex h-24 w-24 items-center justify-center rounded-3xl border border-white/10 bg-navy/70 shadow-glow backdrop-blur">
+          <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-white/10 bg-navy/70 shadow-glow backdrop-blur lg:h-24 lg:w-24 lg:rounded-3xl">
             <svg
               viewBox="0 0 29 26"
               aria-hidden
-              className="h-14 w-auto drop-shadow-[0_0_18px_rgba(255,107,61,0.6)]"
+              className="h-8 w-auto drop-shadow-[0_0_18px_rgba(255,107,61,0.6)] lg:h-14"
               fill="none"
             >
               <path d={FACE_PATH} fill="#FF6B3D" />

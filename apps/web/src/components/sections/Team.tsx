@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { Mascot } from "@/components/brand/Mascot";
-import { Reveal } from "@/components/motion/Reveal";
 import { SectionHeading } from "./SectionHeading";
 
 type Member = { name: string; role: string; desc: string };
@@ -76,7 +75,7 @@ export function Team() {
               className="flex h-36 w-36 flex-col items-center justify-center gap-2 rounded-full border border-orange/40 bg-navy/90 text-center shadow-glow backdrop-blur"
             >
               <Mascot glow className="h-9 w-auto" />
-              <span className="px-3 text-[13px] font-bold leading-tight text-ink">
+              <span className="px-3 text-[13px] font-bold leading-snug text-ink">
                 {t("center")}
               </span>
             </motion.div>
@@ -96,14 +95,14 @@ export function Team() {
                   whileInView={{ scale: 1, opacity: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.5 + i * 0.1, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                  className="card px-4 py-3 text-center transition-colors duration-300 hover:border-orange/40"
+                  className="card px-4 py-4 text-center transition-colors duration-300 hover:border-orange/40"
                 >
                   <span
-                    className="mx-auto mb-1.5 block h-2.5 w-2.5 rounded-full"
+                    className="mx-auto mb-2.5 block h-2.5 w-2.5 rounded-full"
                     style={{ backgroundColor: ACCENTS[i % ACCENTS.length] }}
                   />
-                  <p className="text-sm font-bold text-ink">{m.name}</p>
-                  <p className="text-xs text-orange">{m.role}</p>
+                  <p className="text-sm font-bold leading-snug text-ink">{m.name}</p>
+                  <p className="mt-1 text-xs leading-snug text-orange">{m.role}</p>
                 </motion.div>
               </div>
             );
@@ -111,28 +110,44 @@ export function Team() {
         </div>
       </div>
 
-      {/* Stacked (mobile) */}
-      <div className="mt-12 grid gap-4 md:hidden">
-        <div className="card-us flex items-center gap-3 p-5">
-          <Mascot glow className="h-8 w-auto" />
-          <span className="text-base font-bold text-ink">{t("center")}</span>
-        </div>
-        {members.map((m, i) => (
-          <Reveal key={i} delay={i * 0.05}>
-            <div className="card flex items-start gap-3 p-5">
-              <span
-                className="mt-1.5 h-3 w-3 shrink-0 rounded-full"
-                style={{ backgroundColor: ACCENTS[i % ACCENTS.length] }}
-              />
-              <div>
-                <p className="text-sm font-bold text-ink">
-                  {m.name} <span className="font-normal text-orange">· {m.role}</span>
-                </p>
-                <p className="mt-1 text-sm text-muted">{m.desc}</p>
+      {/* Connected "team spine" (mobile) */}
+      <div className="mt-10 md:hidden">
+        <div className="relative mx-auto max-w-sm">
+          {/* vertical connector line, centred on the 48px marker column */}
+          <div className="absolute bottom-6 left-6 top-14 w-px -translate-x-1/2 bg-gradient-to-b from-orange/60 via-orange/25 to-transparent" />
+
+          {/* PM hub */}
+          <div className="relative mb-6 grid grid-cols-[48px_1fr] items-center gap-4">
+            <div className="flex justify-center">
+              <div className="z-10 flex h-12 w-12 items-center justify-center rounded-full border border-orange/40 bg-navy shadow-glow">
+                <Mascot glow className="h-5 w-auto" />
               </div>
             </div>
-          </Reveal>
-        ))}
+            <p className="text-base font-bold text-ink">{t("center")}</p>
+          </div>
+
+          {/* agents */}
+          <div className="space-y-5">
+            {members.map((m, i) => (
+              <div key={i} className="relative grid grid-cols-[48px_1fr] items-start gap-4">
+                <div className="flex justify-center pt-1">
+                  <span className="z-10 flex h-5 w-5 items-center justify-center rounded-full border border-white/10 bg-navy">
+                    <span
+                      className="h-2.5 w-2.5 rounded-full"
+                      style={{ backgroundColor: ACCENTS[i % ACCENTS.length] }}
+                    />
+                  </span>
+                </div>
+                <div>
+                  <p className="text-[15px] font-bold leading-snug text-ink">
+                    {m.name} <span className="font-normal text-orange">· {m.role}</span>
+                  </p>
+                  <p className="mt-1 text-sm leading-relaxed text-muted">{m.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );
