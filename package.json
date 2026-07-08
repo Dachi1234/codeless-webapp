@@ -1,0 +1,26 @@
+{
+  "name": "codeless-site",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "pnpm@9.15.9",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "typecheck": "turbo run typecheck",
+    "db:generate": "pnpm --filter @codeless/db generate",
+    "db:push": "pnpm --filter @codeless/db push",
+    "db:migrate": "pnpm --filter @codeless/db migrate",
+    "db:seed": "pnpm --filter @codeless/db seed",
+    "dev:web": "pnpm --filter @codeless/web dev",
+    "dev:admin": "pnpm --filter @codeless/admin dev"
+  },
+  "devDependencies": {
+    "turbo": "^2.3.3",
+    "typescript": "^5.7.3",
+    "prettier": "^3.4.2"
+  }
+}

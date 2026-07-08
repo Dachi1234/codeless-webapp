@@ -1,0 +1,118 @@
+{
+  "meta": {
+    "title": "CodeLess — Manage a real product, not just theory",
+    "description": "A PM course where you ship a real product with an AI team. Instead of a certificate — a portfolio."
+  },
+  "nav": {
+    "howItWorks": "How it works",
+    "team": "Team",
+    "outcomes": "Outcome",
+    "register": "Register",
+    "language": "KA"
+  },
+  "hero": {
+    "badge": "PM course · Tbilisi",
+    "titleLine1": "Everyone has a certificate.",
+    "titleLine2": "You'll have a portfolio.",
+    "subtitle": "PM courses teach you theory. With us you gain experience — you ship a real product alongside an AI team.",
+    "ctaPrimary": "Register",
+    "ctaSecondary": "How it works",
+    "scrollCue": "Scroll"
+  },
+  "problem": {
+    "label": "How it really is",
+    "title": "A certificate has never shipped a product",
+    "body": "You learn Agile, pass a test, get a certificate — and then? Real projects bring deadlines, decisions and a team waiting on you.",
+    "chatTitle": "CodeLess Team Chat",
+    "chatStatus": "5 members online",
+    "decision": "And the decision is yours to make.",
+    "chat": [
+      { "name": "Giorgi", "time": "10:02", "text": "We're behind schedule, we need to push the deadline." },
+      { "name": "Tamar", "time": "10:08", "text": "The requested feature needs to change." },
+      { "name": "Ana", "time": "10:15", "text": "I found 5 bugs — which one is the priority?" },
+      { "name": "Nino", "time": "10:21", "text": "We have 2 design versions, which do we pick?" }
+    ]
+  },
+  "compare": {
+    "title": "Others vs CodeLess",
+    "othersTitle": "PM courses",
+    "others": ["Listen", "Memorize", "Take a test", "Get a certificate"],
+    "usTitle": "CodeLess",
+    "us": ["Work", "Make mistakes", "Learn", "Ship a product"]
+  },
+  "team": {
+    "label": "Your team",
+    "title": "Manage a team, gain real experience",
+    "subtitle": "From day one you manage a real team — an analyst, a designer, a developer, QA and a stakeholder.",
+    "center": "PM experience",
+    "members": [
+      { "name": "Analyst", "role": "Requirements", "desc": "BRD, refining requirements and priorities." },
+      { "name": "Designer", "role": "Design", "desc": "Mockups and the user experience." },
+      { "name": "Developer", "role": "Development", "desc": "Features and technical trade-offs." },
+      { "name": "QA", "role": "Testing", "desc": "Bugs must be caught before launch." },
+      { "name": "Stakeholder", "role": "Business", "desc": "Expectations, deadlines and sign-off." }
+    ]
+  },
+  "how": {
+    "label": "Process",
+    "title": "From idea to launch",
+    "subtitle": "A real product cycle — exactly like on the job.",
+    "steps": [
+      { "step": "01", "title": "Idea", "desc": "You shape the product idea and its goal." },
+      { "step": "02", "title": "Requirements", "desc": "You approve the BRD and priorities." },
+      { "step": "03", "title": "Design", "desc": "You pick the mockup and user flow." },
+      { "step": "04", "title": "Development", "desc": "You manage tasks and the team." },
+      { "step": "05", "title": "Launch", "desc": "The product goes live." }
+    ]
+  },
+  "outcomes": {
+    "label": "Outcome",
+    "title": "In 6 weeks — a real, shipped product on your CV",
+    "subtitle": "You don't just walk away with a certificate — you keep the experience, a portfolio and a real story.",
+    "points": [
+      { "title": "A real portfolio", "desc": "A shipped product you can show on your CV." },
+      { "title": "PM experience", "desc": "Requirements, decisions, team, launch." },
+      { "title": "Job-ready", "desc": "You know what a real process looks like." }
+    ]
+  },
+  "register": {
+    "label": "Start now",
+    "title": "Claim your spot in the next cohort",
+    "subtitle": "Register your interest — no payment required yet. We'll reach out with the details.",
+    "fields": {
+      "name": "Full name",
+      "namePlaceholder": "e.g. Nino Beridze",
+      "email": "Email",
+      "emailPlaceholder": "you@example.com",
+      "phone": "Phone (optional)",
+      "phonePlaceholder": "+995 5xx xx xx xx",
+      "experience": "Experience",
+      "experienceOptions": {
+        "none": "Beginner",
+        "some": "Some experience",
+        "experienced": "Experienced"
+      },
+      "source": "How did you hear about us? (optional)",
+      "sourcePlaceholder": "Instagram, a friend, Google...",
+      "message": "Message (optional)",
+      "messagePlaceholder": "What would you like to know?"
+    },
+    "submit": "Register",
+    "submitting": "Sending...",
+    "success": {
+      "title": "Thank you!",
+      "body": "Your application has been received. We'll be in touch soon."
+    },
+    "errors": {
+      "generic": "Something went wrong. Please try again.",
+      "name": "Please enter your name",
+      "email": "Please enter a valid email"
+    }
+  },
+  "footer": {
+    "tagline": "The PM course where you ship a real product.",
+    "location": "codeless.ge · Tbilisi",
+    "rights": "All rights reserved",
+    "nav": "Navigation"
+  }
+}

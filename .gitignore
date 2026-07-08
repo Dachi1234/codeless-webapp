@@ -1,0 +1,25 @@
+# deps
+node_modules
+.pnpm-store
+
+# builds
+.next
+out
+dist
+.turbo
+
+# env
+.env
+.env.local
+.env*.local
+
+# prisma
+packages/db/generated
+
+# misc
+.DS_Store
+*.log
+npm-debug.log*
+coverage
+.vercel
+next-env.d.ts

@@ -1,0 +1,94 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  /* Native smooth-scroll is intentionally NOT set here: Lenis owns smooth
+     scrolling, and enabling both causes a double-animation "jump". */
+
+  /* Lenis smooth-scroll: disable native smooth when JS scroll is active. */
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+
+  body {
+    @apply bg-navy-deep text-ink font-sans antialiased;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background-color: rgba(255, 107, 61, 0.3);
+    color: #fff;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display;
+    text-wrap: balance;
+  }
+}
+
+@layer components {
+  .section {
+    @apply relative mx-auto w-full max-w-6xl px-5 sm:px-8;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-muted;
+  }
+
+  .eyebrow-orange {
+    @apply inline-flex items-center gap-2 rounded-full border border-orange/40 bg-orange/10 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-orange;
+  }
+
+  .card {
+    @apply rounded-3xl border border-white/10 bg-white/[0.03] backdrop-blur-sm;
+  }
+
+  .card-us {
+    @apply rounded-3xl border border-orange/50 bg-orange/[0.06] shadow-glow;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(120deg, #ffffff 0%, #ffd9c9 55%, #ff6b3d 100%);
+    /* Georgian glyphs have deep descenders; give the clip box room so they
+       aren't cropped, and reserve vertical space for the padding. */
+    padding-bottom: 0.14em;
+    margin-bottom: -0.14em;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

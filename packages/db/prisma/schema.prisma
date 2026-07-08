@@ -1,0 +1,87 @@
+// CodeLess database schema
+// Shared by apps/web (writes leads) and apps/admin (reads/updates leads).
+// Built to grow: User / Enrollment / Payment are reserved for the future
+// paid-course phase and are intentionally not implemented yet.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  // Neon: use the pooled URL for `url` and the direct URL for migrations.
+  directUrl = env("DIRECT_URL")
+}
+
+/// A course-interest lead captured from the public marketing site.
+/// No payment is taken at this stage - this is purely a signup of interest.
+model Lead {
+  id              String     @id @default(cuid())
+  createdAt       DateTime   @default(now())
+  updatedAt       DateTime   @updatedAt
+
+  name            String
+  email           String
+  phone           String?
+  experienceLevel String? // e.g. none | some | experienced
+  source          String? // "how did you hear about us"
+  message         String?
+  locale          String     @default("ka") // ka | en (site language at submit)
+
+  status          LeadStatus @default(NEW)
+
+  @@index([createdAt])
+  @@index([status])
+  @@index([email])
+}
+
+enum LeadStatus {
+  NEW
+  CONTACTED
+  ARCHIVED
+}
+
+/// Admin dashboard operator. Credentials auth (email + bcrypt hash) via Auth.js.
+/// Completely separate from any future public `User` accounts.
+model AdminUser {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  name         String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+// ---------------------------------------------------------------------------
+// RESERVED FOR THE PAID PHASE (do not implement yet). Kept here as a contract
+// so the schema can evolve without re-architecture.
+//
+// model User {
+//   id        String   @id @default(cuid())
+//   email     String   @unique
+//   name      String?
+//   createdAt DateTime @default(now())
+//   enrollments Enrollment[]
+// }
+//
+// model Enrollment {
+//   id        String   @id @default(cuid())
+//   userId    String
+//   user      User     @relation(fields: [userId], references: [id])
+//   status    String   // pending | active | completed
+//   createdAt DateTime @default(now())
+//   payment   Payment?
+// }
+//
+// model Payment {
+//   id                    String   @id @default(cuid())
+//   enrollmentId          String   @unique
+//   enrollment            Enrollment @relation(fields: [enrollmentId], references: [id])
+//   stripePaymentIntentId String?  @unique
+//   amount                Int      // minor units
+//   currency              String   @default("gel")
+//   status                String   // requires_payment | succeeded | refunded
+//   createdAt             DateTime @default(now())
+// }
+// ---------------------------------------------------------------------------
