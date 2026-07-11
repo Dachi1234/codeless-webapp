@@ -20,7 +20,8 @@ watch one coherent sample app (a delivery-style app) get built and shipped.
 | Tier | Experience |
 | --- | --- |
 | `full` | Pinned viewport; a horizontal **filmstrip** of the five panels scrubs via GSAP `ScrollTrigger` (`xPercent`, `end: (n-1)*100%`). A sticky **pipeline stepper** (01→05, connector fills to the active step) sits below the nav. The centered panel's artifact triggers its internal animation via an `active` prop. |
-| `lite` / `static` | The same five artifacts stacked vertically (`active`), each paired with its number/title/description — believable visuals, no pinning. |
+| `lite` | [`HowItWorksImmersiveMobile`](../../apps/web/src/components/how/HowItWorksImmersiveMobile.tsx) — a `position: sticky` stage where **vertical** scroll advances the five artifacts one at a time (horizontal pinning is awkward on touch). Same `StageVisual` artifacts + a compact pipeline stepper; driven by `useScrollProgress`, no canvas, lazy-loaded (`ssr:false`). |
+| `static` | The same five artifacts stacked vertically (`active`), each paired with its number/title/description — believable visuals, no pinning. |
 
 ## Why it was rebuilt
 
@@ -40,6 +41,8 @@ through Design → Launch so the build feels continuous.
   transitions keyed off `active` (one rAF counter for the launch metric).
 - `Pipeline` (in the section) — the stepper, offset `top-16` to clear the fixed
   nav (see [motion-system.md](../motion-system.md) → nav offset).
+- [`HowItWorksImmersiveMobile.tsx`](../../apps/web/src/components/how/HowItWorksImmersiveMobile.tsx)
+  — the `lite`-tier sticky stage (reuses `StageVisual` + a compact stepper).
 - Copy: `how.steps` in `messages/en.json` / `ka.json`.
 
 > Removed in this pass: `ProductMock.tsx` and `HowItWorksVertical.tsx` (replaced

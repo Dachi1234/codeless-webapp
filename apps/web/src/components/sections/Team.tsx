@@ -21,6 +21,12 @@ const TeamOrbit = dynamic(
   },
 );
 
+const TeamImmersiveMobile = dynamic(
+  () =>
+    import("@/components/team/TeamImmersiveMobile").then((module) => module.TeamImmersiveMobile),
+  { ssr: false },
+);
+
 function TeamSpine({ members, center }: { members: TeamMember[]; center: string }) {
   return (
     <div className="relative mx-auto max-w-sm">
@@ -66,15 +72,16 @@ export function Team() {
   const t = useTranslations("team");
   const members = t.raw("members") as TeamMember[];
   const tier = useMotionTier();
-  const showOrbit = tier === "full";
 
   return (
     <section id="team" className="section py-24 sm:py-32">
       <SectionHeading label={t("label")} title={t("title")} subtitle={t("subtitle")} />
 
       <div className="mt-14 sm:mt-20">
-        {showOrbit ? (
+        {tier === "full" ? (
           <TeamOrbit members={members} center={t("center")} />
+        ) : tier === "lite" ? (
+          <TeamImmersiveMobile members={members} center={t("center")} />
         ) : (
           <TeamSpine members={members} center={t("center")} />
         )}

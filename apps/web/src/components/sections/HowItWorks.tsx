@@ -1,11 +1,19 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import { StageVisual } from "@/components/how/StageVisual";
 import { SectionHeading } from "./SectionHeading";
 import { ensureScrollTrigger, refreshScrollTriggers } from "@/lib/motion/gsap";
 import { useMotionTier } from "@/lib/motion/useMotionTier";
+
+// Mobile-immersive variant is only loaded for the touch/lite tier.
+const HowItWorksImmersiveMobile = dynamic(
+  () =>
+    import("@/components/how/HowItWorksImmersiveMobile").then((m) => m.HowItWorksImmersiveMobile),
+  { ssr: false },
+);
 
 type BuildStep = { step: string; title: string; desc: string };
 
@@ -97,7 +105,9 @@ export function HowItWorks() {
         <SectionHeading label={t("label")} title={t("title")} subtitle={t("subtitle")} />
       </div>
 
-      {!immersive ? (
+      {tier === "lite" ? (
+        <HowItWorksImmersiveMobile steps={steps} />
+      ) : !immersive ? (
         <div className="section mt-14 space-y-16">
           {steps.map((step) => (
             <article key={step.step} className="grid items-center gap-8 md:grid-cols-2">
