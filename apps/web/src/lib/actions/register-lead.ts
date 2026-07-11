@@ -2,10 +2,16 @@
 
 import { headers } from "next/headers";
 import { prisma, LeadStatus } from "@codeless/db";
-import { leadSchema, type RegisterResult } from "@/lib/validation";
+import { isHoneypotPopulated, leadSchema, type RegisterResult } from "@/lib/validation";
 import { rateLimit } from "@/lib/rate-limit";
 
 export async function registerLead(input: unknown): Promise<RegisterResult> {
+  // Check untrusted input before validation so bots are silently accepted and
+  // dropped even when the rest of their payload is invalid.
+  if (isHoneypotPopulated(input)) {
+    return { ok: true };
+  }
+
   const parsed = leadSchema.safeParse(input);
   if (!parsed.success) {
     return { ok: false, error: "validation" };
@@ -13,17 +19,10 @@ export async function registerLead(input: unknown): Promise<RegisterResult> {
 
   const data = parsed.data;
 
-  // Honeypot tripped -> pretend success, silently drop.
-  if (data.website) {
-    return { ok: true };
-  }
-
   // Rate limit by client IP (best-effort behind proxies).
   const hdrs = await headers();
   const ip =
-    hdrs.get("x-forwarded-for")?.split(",")[0]?.trim() ||
-    hdrs.get("x-real-ip") ||
-    "unknown";
+    hdrs.get("x-forwarded-for")?.split(",")[0]?.trim() || hdrs.get("x-real-ip") || "unknown";
 
   if (!rateLimit(`lead:${ip}`)) {
     return { ok: false, error: "rate_limit" };

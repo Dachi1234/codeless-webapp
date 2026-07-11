@@ -27,7 +27,11 @@
     "chatStatus": "5 members online",
     "decision": "And the decision is yours to make.",
     "chat": [
-      { "name": "Giorgi", "time": "10:02", "text": "We're behind schedule, we need to push the deadline." },
+      {
+        "name": "Giorgi",
+        "time": "10:02",
+        "text": "We're behind schedule, we need to push the deadline."
+      },
       { "name": "Tamar", "time": "10:08", "text": "The requested feature needs to change." },
       { "name": "Ana", "time": "10:15", "text": "I found 5 bugs — which one is the priority?" },
       { "name": "Nino", "time": "10:21", "text": "We have 2 design versions, which do we pick?" }
@@ -36,9 +40,28 @@
   "compare": {
     "title": "Others vs CodeLess",
     "othersTitle": "PM courses",
-    "others": ["Listen", "Memorize", "Take a test", "Get a certificate"],
     "usTitle": "CodeLess",
-    "us": ["Work", "Make mistakes", "Learn", "Ship a product"]
+    "stageLabel": "Chapter {current} of {total}",
+    "stages": [
+      {
+        "course": "Learn the theory",
+        "courseCaption": "Watch lessons and memorize someone else's process.",
+        "codeless": "Work on a real product",
+        "codelessCaption": "Make decisions with an AI product team from day one."
+      },
+      {
+        "course": "Pass the test",
+        "courseCaption": "Choose the expected answer in a controlled exercise.",
+        "codeless": "Fail. Fix. Improve.",
+        "codelessCaption": "Meet real problems, make the call and learn from the result."
+      },
+      {
+        "course": "Receive a certificate",
+        "courseCaption": "The course ends, but the blank CV problem remains.",
+        "codeless": "Ship it live",
+        "codelessCaption": "Finish with a working product, a story and proof of experience."
+      }
+    ]
   },
   "team": {
     "label": "Your team",
@@ -46,7 +69,11 @@
     "subtitle": "From day one you manage a real team — an analyst, a designer, a developer, QA and a stakeholder.",
     "center": "PM experience",
     "members": [
-      { "name": "Analyst", "role": "Requirements", "desc": "BRD, refining requirements and priorities." },
+      {
+        "name": "Analyst",
+        "role": "Requirements",
+        "desc": "BRD, refining requirements and priorities."
+      },
       { "name": "Designer", "role": "Design", "desc": "Mockups and the user experience." },
       { "name": "Developer", "role": "Development", "desc": "Features and technical trade-offs." },
       { "name": "QA", "role": "Testing", "desc": "Bugs must be caught before launch." },
@@ -57,6 +84,8 @@
     "label": "Process",
     "title": "From idea to launch",
     "subtitle": "A real product cycle — exactly like on the job.",
+    "assemblyLabel": "Product build",
+    "shipped": "Shipped",
     "steps": [
       { "step": "01", "title": "Idea", "desc": "You shape the product idea and its goal." },
       { "step": "02", "title": "Requirements", "desc": "You approve the BRD and priorities." },
@@ -69,6 +98,17 @@
     "label": "Outcome",
     "title": "In 6 weeks — a real, shipped product on your CV",
     "subtitle": "You don't just walk away with a certificate — you keep the experience, a portfolio and a real story.",
+    "stats": [
+      { "value": 6, "suffix": "w", "label": "from idea to a live product" },
+      { "value": 1, "suffix": "×", "label": "real product shipped by you" },
+      { "value": 5, "suffix": "", "label": "AI teammates under your direction" }
+    ],
+    "portfolio": {
+      "eyebrow": "Portfolio case study",
+      "role": "Product Manager",
+      "project": "A product I actually shipped",
+      "shipped": "Live"
+    },
     "points": [
       { "title": "A real portfolio", "desc": "A shipped product you can show on your CV." },
       { "title": "PM experience", "desc": "Requirements, decisions, team, launch." },

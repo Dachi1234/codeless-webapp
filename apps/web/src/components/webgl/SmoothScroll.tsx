@@ -2,13 +2,8 @@
 
 import { useEffect, useRef } from "react";
 import Lenis from "lenis";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ensureScrollTrigger, gsap, ScrollTrigger } from "@/lib/motion/gsap";
 import { usePrefersReducedMotion } from "@/lib/useMediaQuery";
-
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
 
 export function SmoothScroll({ children }: { children: React.ReactNode }) {
   const reduced = usePrefersReducedMotion();
@@ -17,6 +12,7 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     // Respect reduced-motion: skip inertia scrolling entirely.
     if (reduced) return;
+    ensureScrollTrigger();
 
     const lenis = new Lenis({
       duration: 1.1,

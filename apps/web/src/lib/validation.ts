@@ -8,12 +8,24 @@ export const leadSchema = z.object({
   source: z.string().trim().max(120).optional().or(z.literal("")),
   message: z.string().trim().max(1000).optional().or(z.literal("")),
   locale: z.enum(["ka", "en"]).default("ka"),
-  // Honeypot: real users never fill this hidden field.
-  website: z.string().max(0).optional().or(z.literal("")),
 });
 
-export type LeadInput = z.infer<typeof leadSchema>;
+// The honeypot belongs to the browser form, not the validated lead payload.
+// It intentionally accepts any string so bots reach the server-side silent drop.
+export const leadFormSchema = leadSchema.extend({
+  website: z.string().optional(),
+});
+
+export type LeadFormInput = z.input<typeof leadFormSchema>;
+
+export function isHoneypotPopulated(input: unknown): boolean {
+  if (typeof input !== "object" || input === null || !("website" in input)) {
+    return false;
+  }
+
+  const value = (input as Record<string, unknown>).website;
+  return value !== undefined && value !== null && value !== "";
+}
 
 export type RegisterResult =
-  | { ok: true }
-  | { ok: false; error: "validation" | "rate_limit" | "server" };
+  { ok: true } | { ok: false; error: "validation" | "rate_limit" | "server" };

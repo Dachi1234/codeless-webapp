@@ -1,17 +1,10 @@
 import { auth } from "@/auth";
 import { prisma } from "@codeless/db";
+import { csvCell } from "@/lib/csv";
 import { buildLeadWhere } from "@/lib/leads";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
-
-function csvCell(value: unknown): string {
-  const s = value === null || value === undefined ? "" : String(value);
-  if (/[",\n\r]/.test(s)) {
-    return `"${s.replace(/"/g, '""')}"`;
-  }
-  return s;
-}
 
 export async function GET(request: Request) {
   const session = await auth();

@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { AnimatePresence, motion } from "framer-motion";
 import { useLocale, useTranslations } from "next-intl";
-import { leadSchema, type LeadInput } from "@/lib/validation";
+import { leadFormSchema, type LeadFormInput } from "@/lib/validation";
 import { registerLead } from "@/lib/actions/register-lead";
 import { Button } from "@/components/ui/Button";
 import { Mascot } from "@/components/brand/Mascot";
@@ -26,12 +26,12 @@ export function Register() {
     handleSubmit,
     reset,
     formState: { errors, isSubmitting },
-  } = useForm<LeadInput>({
-    resolver: zodResolver(leadSchema),
+  } = useForm<LeadFormInput>({
+    resolver: zodResolver(leadFormSchema),
     defaultValues: { locale, website: "" },
   });
 
-  const onSubmit = async (values: LeadInput) => {
+  const onSubmit = async (values: LeadFormInput) => {
     setServerError(null);
     const result = await registerLead({ ...values, locale });
     if (result.ok) {
@@ -87,10 +87,18 @@ export function Register() {
                   noValidate
                 >
                   {/* Honeypot (visually hidden, off-screen) */}
-                  <div className="absolute left-[-9999px] top-auto h-0 w-0 overflow-hidden" aria-hidden>
+                  <div
+                    className="absolute left-[-9999px] top-auto h-0 w-0 overflow-hidden"
+                    aria-hidden
+                  >
                     <label>
                       Website
-                      <input type="text" tabIndex={-1} autoComplete="off" {...register("website")} />
+                      <input
+                        type="text"
+                        tabIndex={-1}
+                        autoComplete="off"
+                        {...register("website")}
+                      />
                     </label>
                   </div>
 
@@ -139,7 +147,10 @@ export function Register() {
                       <label className="mb-1.5 block text-xs font-medium text-muted">
                         {t("fields.experience")}
                       </label>
-                      <select className={cn(fieldClass, "appearance-none")} {...register("experienceLevel")}>
+                      <select
+                        className={cn(fieldClass, "appearance-none")}
+                        {...register("experienceLevel")}
+                      >
                         <option value="">—</option>
                         <option value="none">{t("fields.experienceOptions.none")}</option>
                         <option value="some">{t("fields.experienceOptions.some")}</option>

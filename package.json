@@ -11,6 +11,7 @@
     "build": "turbo run build",
     "lint": "turbo run lint",
     "typecheck": "turbo run typecheck",
+    "test:hardening": "pnpm --filter @codeless/db exec tsx --test ../../tests/hardening.test.ts",
     "db:generate": "pnpm --filter @codeless/db generate",
     "db:push": "pnpm --filter @codeless/db push",
     "db:migrate": "pnpm --filter @codeless/db migrate",

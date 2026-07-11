@@ -31,6 +31,7 @@
   body {
     @apply bg-navy-deep text-ink font-sans antialiased;
     min-height: 100vh;
+    overflow-x: clip;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
@@ -91,4 +92,29 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
   }
+}
+
+@keyframes orbit-spin {
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes orbit-counter-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.orbit-overlay {
+  animation: orbit-spin 180s linear infinite;
+}
+
+.orbit-label-counter {
+  animation: orbit-counter-spin 180s linear infinite;
+}
+
+.orbit-paused,
+.orbit-paused .orbit-label-counter {
+  animation-play-state: paused;
 }
