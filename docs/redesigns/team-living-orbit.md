@@ -12,7 +12,7 @@ connected by animated energy channels over a WebGL backdrop.
 | Tier | Experience |
 | --- | --- |
 | `full` | [`TeamOrbit`](../../apps/web/src/components/team/TeamOrbit.tsx) — a 2.5D elliptical orbit. Role cards are positioned every frame (rAF) with depth-based scale, opacity, blur and z-index for real perspective; animated SVG connectors link each role to the hub; hover/focus pulls a card forward and lights its channel; the orbit assembles on scroll-in. Behind it, [`TeamEnergyField`](../../apps/web/src/components/team/TeamEnergyField.tsx) renders a pulsing core, rotating rays and drifting sparks. Lazy-loaded (`next/dynamic`, `ssr:false`) with a skeleton. |
-| `lite` | [`TeamImmersiveMobile`](../../apps/web/src/components/team/TeamImmersiveMobile.tsx) — a `position: sticky` stage that keeps the PM hub and the (cheap) `TeamEnergyField` centered while vertical scroll **spotlights one role at a time**, each connected to the hub with an accent channel. Touch-friendly (scroll, not hover); driven by `useScrollProgress`; lazy-loaded (`ssr:false`). |
+| `lite` | [`TeamOrbitMobile`](../../apps/web/src/components/team/TeamOrbitMobile.tsx) — a compact interactive **orbit**: role icons orbit the PM hub over the `TeamEnergyField`. It auto-rotates as a showcase (front-most role's details show below) and **tap a role** to spin it to the front and lock focus. Lazy-loaded (`ssr:false`). |
 | `static` | `TeamSpine` — a clean vertical timeline: the PM hub at the top, each role as a color-dotted node with name/role/description. |
 
 ## Why it was rebuilt
@@ -37,7 +37,7 @@ that didn't read as "a team." The rebuild makes every node **meaningful**:
   the adjacent pinned section can momentarily bleed through — a hard reload
   clears it; it is not a production layout bug.
 - The `full` orbit ([`TeamOrbit.tsx`](../../apps/web/src/components/team/TeamOrbit.tsx))
-  and the `lite` stage ([`TeamImmersiveMobile.tsx`](../../apps/web/src/components/team/TeamImmersiveMobile.tsx))
+  and the `lite` orbit ([`TeamOrbitMobile.tsx`](../../apps/web/src/components/team/TeamOrbitMobile.tsx))
   share `TEAM_ACCENTS`, `RoleIcon` and `TeamEnergyField`.
 - Members/copy: `team.members` + `team.center` in `messages/en.json` / `ka.json`.
 - The canvas is `aria-hidden`; the `TeamSpine` fallback carries the full,

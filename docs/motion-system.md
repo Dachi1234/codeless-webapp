@@ -1,7 +1,7 @@
 # Motion system
 
-Every immersive section is built on three shared primitives in
-[`apps/web/src/lib/motion`](../apps/web/src/lib/motion). They exist so the
+Every immersive section is built on a few shared primitives (mostly in
+[`apps/web/src/lib/motion`](../apps/web/src/lib/motion)). They exist so the
 "wow" experiences degrade cleanly instead of shipping a broken canvas to a
 phone or a reduced-motion user.
 
@@ -13,7 +13,7 @@ client into one of three tiers:
 | Tier | Who gets it | What it ships |
 | --- | --- | --- |
 | `static` | `prefers-reduced-motion`, Save-Data, or no WebGL | Plain, fully accessible DOM. No canvas, no scroll effects. |
-| `lite` | touch / narrow (`≤768px`) / low-power (`≤4GB` **and** `≤4` cores) | Cheap WebGL: native `position: sticky` + scroll progress, capped DPR, canvas paused off-screen. |
+| `lite` | touch / narrow (`≤768px`) / low-power (`≤4GB` **and** `≤4` cores) | Touch-native experiences: horizontal **swipe carousels** for storytelling sections and a compact WebGL orbit for the team. Capped DPR, canvas paused off-screen. |
 | `full` | desktop with a capable GPU | The heavyweight pinned/scrubbed experiences (GSAP, R3F orbit). |
 
 Notes:
@@ -34,20 +34,18 @@ if (tier === "lite") return <MobileImmersive />;
 return <DesktopImmersive />;
 ```
 
-## 2. Scroll progress — `useScrollProgress()`
+## 2. Swipe carousel — `SwipeCarousel`
 
-[`useScrollProgress.ts`](../apps/web/src/lib/motion/useScrollProgress.ts) reports
-`0..1` progress through a tall wrapper that contains a `position: sticky` stage —
-**no scroll hijacking, no Lenis coupling**, so it is robust on touch. Used by the
-`lite` Compare experience to drive a WebGL canvas.
+[`components/shared/SwipeCarousel.tsx`](../apps/web/src/components/shared/SwipeCarousel.tsx)
+is the `lite`-tier storytelling primitive: a **native horizontal swipe carousel**
+(CSS `scroll-snap` + real finger momentum, no scroll hijacking). The snapped
+panel index is derived from `scrollLeft` and passed to the header, footer and
+each panel so steppers, dots and per-panel animations can react.
 
-- `setContainerRef` on the tall wrapper.
-- `progressRef` — a ref (not state); read it inside a render loop so WebGL
-  updates don't trigger React re-renders every frame.
-- `onFrame(progress)` — optional per-frame callback (fires at refresh rate).
-- `inView` — state for cheap show/hide toggles.
-- The rAF loop only runs while the container intersects the viewport
-  (IntersectionObserver), so everything idles off-screen.
+- `count` + `renderPanel(index, active)` — one full-width snap panel each.
+- `renderHeader(active)` / `renderFooter(active)` — e.g. a pipeline stepper or
+  the shared `CarouselDots`.
+- Used by the `lite` **Compare** and **How It Works** sections.
 
 ## 3. GSAP helpers — `gsap.ts`
 

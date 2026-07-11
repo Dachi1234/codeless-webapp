@@ -24,9 +24,9 @@ docs explain the _why_ and _how_ behind the code.
    real, accessible fallbacks. Nothing depends on the animation running.
 2. **DOM text stays real.** All copy is selectable DOM over the canvas, for
    readability, SEO and screen readers. WebGL is decoration (`aria-hidden`).
-3. **No scroll hijacking.** Progress is driven by native scroll — GSAP
-   `ScrollTrigger` pin+scrub on desktop, `position: sticky` +
-   [`useScrollProgress`](../apps/web/src/lib/motion/useScrollProgress.ts) on
+3. **No scroll hijacking.** Motion is driven by native input — GSAP
+   `ScrollTrigger` pin+scrub on desktop, and native horizontal **swipe**
+   ([`SwipeCarousel`](../apps/web/src/components/shared/SwipeCarousel.tsx)) on
    touch — so the scrollbar and momentum always behave normally.
 4. **Idle when off-screen.** rAF loops and WebGL canvases pause when their
    section leaves the viewport (IntersectionObserver).

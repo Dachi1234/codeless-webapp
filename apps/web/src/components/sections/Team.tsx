@@ -21,9 +21,8 @@ const TeamOrbit = dynamic(
   },
 );
 
-const TeamImmersiveMobile = dynamic(
-  () =>
-    import("@/components/team/TeamImmersiveMobile").then((module) => module.TeamImmersiveMobile),
+const TeamOrbitMobile = dynamic(
+  () => import("@/components/team/TeamOrbitMobile").then((module) => module.TeamOrbitMobile),
   { ssr: false },
 );
 
@@ -81,7 +80,7 @@ export function Team() {
         {tier === "full" ? (
           <TeamOrbit members={members} center={t("center")} />
         ) : tier === "lite" ? (
-          <TeamImmersiveMobile members={members} center={t("center")} />
+          <TeamOrbitMobile members={members} center={t("center")} />
         ) : (
           <TeamSpine members={members} center={t("center")} />
         )}

@@ -13,7 +13,7 @@ product, pass a test → fail/fix/improve, get a certificate → ship it live).
 | Tier | Experience |
 | --- | --- |
 | `full` | Pinned, scroll-scrubbed **cross-fade** between chapters. GSAP `ScrollTrigger` pins the stage for ~one viewport per transition; visuals + copy rise/de-blur into place. |
-| `lite` | [`CompareImmersiveMobile`](../../apps/web/src/components/compare/CompareImmersiveMobile.tsx) — a tall `position: sticky` stage with a WebGL split/bloom/particle canvas ([`CompareSplitScene`](../../apps/web/src/components/compare/CompareSplitScene.tsx)) behind crisp DOM, driven by `useScrollProgress`. Lazy-loaded (`next/dynamic`, `ssr:false`) so the R3F chunk never ships to desktop. |
+| `lite` | [`CompareImmersiveMobile`](../../apps/web/src/components/compare/CompareImmersiveMobile.tsx) — a native horizontal **swipe carousel** ([`SwipeCarousel`](../../apps/web/src/components/shared/SwipeCarousel.tsx)): one course-vs-CodeLess diptych per screen, swipe through the story. DOM-only (no canvas), lazy-loaded (`ssr:false`). |
 | `static` | `CompareFallback` — the same panels stacked as a plain, readable two-column list. |
 
 ## Why it was rebuilt
