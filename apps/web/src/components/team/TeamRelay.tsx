@@ -7,9 +7,12 @@ import { RELAY_NODES, type RelayRole } from "./relayShared";
 
 const PATH_D =
   "M 500 30 C 840 120, 840 250, 500 320 C 160 390, 160 520, 500 590 C 820 650, 820 760, 500 800";
-// Gentler, near-vertical snake on narrow viewports so nodes + cards stay on-screen.
+// Gentler, near-vertical snake on narrow viewports. Equal-height segments (so the
+// nodes, placed by path length, land at roughly even vertical intervals) and a
+// smaller x-swing (so length tracks vertical distance). Ends at y≈730/820 to leave
+// room below the last node for its card.
 const PATH_D_NARROW =
-  "M 500 30 C 690 110, 690 240, 500 320 C 310 400, 310 520, 500 590 C 690 660, 690 770, 500 800";
+  "M 500 40 C 600 100, 600 210, 500 270 C 400 330, 400 440, 500 500 C 600 560, 600 670, 500 730";
 
 function segment(p: number): number {
   if (p < 0.06) return 0;
@@ -161,7 +164,13 @@ export function TeamRelay({
         {/* Stage fills the sticky viewport; the SVG stretches to it and nodes are
             positioned by percentage, so the thread + nodes stay aligned at any size.
             The generous bottom offset keeps the final PM node + its card fully on-screen. */}
-        <div className="absolute inset-x-0 bottom-[13vh] top-[clamp(140px,20vh,220px)]">
+        <div
+          className={`absolute inset-x-0 ${
+            narrow
+              ? "bottom-[6vh] top-[clamp(118px,15vh,170px)]"
+              : "bottom-[13vh] top-[clamp(140px,20vh,220px)]"
+          }`}
+        >
           <svg
             viewBox="0 0 1000 820"
             preserveAspectRatio="none"
@@ -221,7 +230,7 @@ export function TeamRelay({
                   className={`absolute rounded-[14px] border bg-navy-950/85 p-3.5 backdrop-blur-sm transition-all duration-300 ${
                     narrow
                       ? `left-1/2 w-[min(230px,66vw)] -translate-x-1/2 text-center ${
-                          isPM ? "bottom-6" : "top-6"
+                          isPM ? "top-11" : "top-5"
                         }`
                       : `top-0 min-w-[150px] max-w-[230px] -translate-y-1/2 ${
                           node.side === "r" ? "left-[22px] text-left" : "right-[22px] text-right"
