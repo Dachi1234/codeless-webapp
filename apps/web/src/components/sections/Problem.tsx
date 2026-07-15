@@ -5,9 +5,10 @@ import { useTranslations } from "next-intl";
 import { Reveal } from "@/components/motion/Reveal";
 import { Mascot } from "@/components/brand/Mascot";
 
-type ChatMsg = { name: string; time: string; text: string };
+type ChatMsg = { name: string; role: string; text: string };
 
-const AVATARS = ["#3DDC84", "#5B8DEF", "#E23B3B", "#9B6DFF"];
+// Stakeholder, Designer, Developer, QA, You (PM) — kept dark enough for white text.
+const AVATARS = ["#FF6B3D", "#FF7A45", "#5B8DEF", "#3DDC84", "#9B6DFF"];
 
 export function Problem() {
   const t = useTranslations("problem");
@@ -79,7 +80,9 @@ export function Problem() {
                     <div className="min-w-0 flex-1">
                       <div className="mb-1 flex items-baseline gap-2">
                         <span className="text-sm font-semibold text-ink">{m.name}</span>
-                        <span className="text-[11px] text-muted">{m.time}</span>
+                        <span className="font-mono text-[10.5px] uppercase tracking-[0.08em] text-muted">
+                          {m.role}
+                        </span>
                       </div>
                       <div className="rounded-2xl rounded-tl-sm bg-white/[0.05] px-3.5 py-2.5 text-sm leading-relaxed text-ink/85">
                         {m.text}

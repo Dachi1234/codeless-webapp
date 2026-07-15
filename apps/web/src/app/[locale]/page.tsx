@@ -7,8 +7,8 @@ import { ScrollBuddy } from "@/components/brand/ScrollBuddy";
 import { Hero } from "@/components/sections/Hero";
 import { Problem } from "@/components/sections/Problem";
 import { Compare } from "@/components/sections/Compare";
-import { Team } from "@/components/sections/Team";
 import { HowItWorks } from "@/components/sections/HowItWorks";
+import { Team } from "@/components/sections/Team";
 import { Outcomes } from "@/components/sections/Outcomes";
 import { Register } from "@/components/sections/Register";
 
@@ -30,8 +30,8 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         <Hero />
         <Problem />
         <Compare />
-        <Team />
         <HowItWorks />
+        <Team />
         <Outcomes />
         <Register />
       </main>

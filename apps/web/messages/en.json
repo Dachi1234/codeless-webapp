@@ -1,129 +1,257 @@
 {
   "meta": {
-    "title": "CodeLess — Manage a real product, not just theory",
-    "description": "A PM course where you ship a real product with an AI team. Instead of a certificate — a portfolio."
+    "title": "CodeLess — Ship a real product, not just theory",
+    "description": "A 6-week PM simulation where you run a live product with an AI team and walk out with proof on your CV, not another certificate."
   },
   "nav": {
     "howItWorks": "How it works",
-    "team": "Team",
-    "outcomes": "Outcome",
-    "register": "Register",
+    "team": "The team",
+    "outcomes": "The payoff",
+    "register": "Join the cohort",
     "language": "KA"
   },
   "hero": {
-    "badge": "PM course · Tbilisi",
-    "titleLine1": "Everyone has a certificate.",
-    "titleLine2": "You'll have a portfolio.",
-    "subtitle": "PM courses teach you theory. With us you gain experience — you ship a real product alongside an AI team.",
-    "ctaPrimary": "Register",
-    "ctaSecondary": "How it works",
-    "scrollCue": "Scroll"
+    "badge": "Cohort 04 · starts Sept 2026",
+    "titleLine1": "Everyone has a",
+    "titleStrike": "certificate.",
+    "titleLine2": "You'll ship a product.",
+    "subtitle": "Stop collecting theory. Over 6 weeks and 12 sessions you'll run a live product as its PM — while an AI team of stakeholder, designer, developer and QA push back like the real thing — and walk out with proof on your CV, not another PDF.",
+    "ctaPrimary": "Claim your seat",
+    "ctaSecondary": "See how it works",
+    "scrollCue": "Scroll",
+    "stats": [
+      { "value": "6", "label": "weeks · 12 sessions" },
+      { "value": "30+", "label": "real deliverables to your name" },
+      { "value": "0", "label": "busywork certificates" }
+    ]
   },
   "problem": {
-    "label": "How it really is",
-    "title": "A certificate has never shipped a product",
-    "body": "You learn Agile, pass a test, get a certificate — and then? Real projects bring deadlines, decisions and a team waiting on you.",
-    "chatTitle": "CodeLess Team Chat",
+    "label": "01 — You won't learn alone",
+    "title": "Real products aren't built in a lecture hall.",
+    "body": "They're built in the back-and-forth of a team. From day one you're dropped into a live workspace where the messy, real decisions actually happen.",
+    "chatTitle": "#product-team",
     "chatStatus": "5 members online",
-    "decision": "And the decision is yours to make.",
+    "decision": "And every call lands on your desk.",
     "chat": [
       {
-        "name": "Giorgi",
-        "time": "10:02",
-        "text": "We're behind schedule, we need to push the deadline."
+        "name": "Tamar",
+        "role": "Stakeholder",
+        "text": "I need the booking flow to feel instant — and can we add reviews too?"
       },
-      { "name": "Tamar", "time": "10:08", "text": "The requested feature needs to change." },
-      { "name": "Ana", "time": "10:15", "text": "I found 5 bugs — which one is the priority?" },
-      { "name": "Nino", "time": "10:21", "text": "We have 2 design versions, which do we pick?" }
+      {
+        "name": "Natia",
+        "role": "Designer",
+        "text": "Mockups attached. Single-screen checkout — less drop-off."
+      },
+      {
+        "name": "Giorgi",
+        "role": "Developer",
+        "text": "Which endpoints do we actually need? And is this web or mobile?"
+      },
+      {
+        "name": "Ana",
+        "role": "QA",
+        "text": "That story has no acceptance criteria — I can't test it yet."
+      },
+      {
+        "name": "You",
+        "role": "PM",
+        "text": "Noted. Reviews go to the backlog; let's lock scope and ship."
+      }
     ]
   },
   "compare": {
-    "title": "Others vs CodeLess",
-    "othersTitle": "PM courses",
-    "usTitle": "CodeLess",
-    "stageLabel": "Chapter {current} of {total}",
-    "stages": [
+    "label": "02 — The difference",
+    "title": "Most courses hand you this.",
+    "paperLabel": "typical_syllabus.pdf",
+    "paperLines": [
+      "Listen to lectures",
+      "Memorize frameworks",
+      "Take a multiple-choice test",
+      "Collect a certificate"
+    ],
+    "shredLabel": "we shred it. here's what's left:",
+    "outcomes": [
+      "Ship a live product",
+      "Break things & fix them",
+      "Get feedback from a real team",
+      "Build proof, not paper"
+    ]
+  },
+  "how": {
+    "label": "03 — How the course works",
+    "title": "Learn it. Then the team makes you use it.",
+    "subtitle": "Each session you learn a concept — then spend the week applying it hands-on with the team on your live product. Six weeks, two tracks, one portfolio that proves it.",
+    "rail": [
+      { "num": "01", "title": "Foundations", "desc": "PM mindset & Scrum" },
+      { "num": "02", "title": "The Machine", "desc": "SDLC, APIs & data" },
+      { "num": "03", "title": "Planning", "desc": "Requirements & backlog" },
+      { "num": "04", "title": "People & Risk", "desc": "Stakeholders & RACI" },
+      { "num": "05", "title": "Value", "desc": "Build-vs-buy & KPIs" },
+      { "num": "06", "title": "Ship It", "desc": "Launch & capstone" }
+    ],
+    "leaveLabel": "You leave with —",
+    "leaveWith": [
+      "A live product",
+      "Real backlog",
+      "RACI & risk register",
+      "KPIs & OKRs",
+      "A capstone portfolio"
+    ]
+  },
+  "curriculum": {
+    "label": "The full syllabus",
+    "title": "Six weeks. Twelve sessions. One product.",
+    "subtitle": "The teaching sequence is linear and logical; the team's demands are always a little richer than what was just taught. That gap is where the learning happens.",
+    "learnLabel": "You learn",
+    "teamLabel": "Hands-on with the team",
+    "artifactsLabel": "You leave with",
+    "countLabel": "real deliverables",
+    "weeks": [
       {
-        "course": "Learn the theory",
-        "courseCaption": "Watch lessons and memorize someone else's process.",
-        "codeless": "Work on a real product",
-        "codelessCaption": "Make decisions with an AI product team from day one."
+        "label": "Week 1",
+        "title": "Foundations",
+        "learn": "What a project and product really are, the core IT roles, and Scrum end to end — pillars, values, events and artifacts.",
+        "team": "Tamar introduces the team in character and pitches a raw idea; you dig for the real need. Then she pushes to \"just build\" while Giorgi demands a full spec — and you settle how the team will actually work.",
+        "docs": [
+          { "name": "Product one-pager", "type": "pdf" },
+          { "name": "Requirements log", "type": "doc" },
+          { "name": "ClickUp workspace", "type": "app" },
+          { "name": "Working-model note", "type": "md" },
+          { "name": "Team agreement", "type": "md" }
+        ]
       },
       {
-        "course": "Pass the test",
-        "courseCaption": "Choose the expected answer in a controlled exercise.",
-        "codeless": "Fail. Fix. Improve.",
-        "codelessCaption": "Meet real problems, make the call and learn from the result."
+        "label": "Week 2",
+        "title": "How Products Are Built",
+        "learn": "The full SDLC and every role in it, IT architecture, the frontend/backend split, APIs, databases and end-to-end flows.",
+        "team": "Each teammate's role clicks into place: Giorgi maps his hand-offs and asks which endpoints and platform you need; Ana explains what she needs to test; Natia waits on a platform call before she designs.",
+        "docs": [
+          { "name": "SDLC map", "type": "fig" },
+          { "name": "Roles & responsibilities", "type": "xls" },
+          { "name": "E2E flow diagram", "type": "fig" },
+          { "name": "Data model sketch", "type": "fig" },
+          { "name": "Endpoint wishlist", "type": "md" }
+        ]
       },
       {
-        "course": "Receive a certificate",
-        "courseCaption": "The course ends, but the blank CV problem remains.",
-        "codeless": "Ship it live",
-        "codelessCaption": "Finish with a working product, a story and proof of experience."
+        "label": "Week 3",
+        "title": "Defining & Planning",
+        "learn": "Functional vs non-functional requirements, BA techniques, AS-IS / TO-BE, backlog structure, estimation and prioritisation.",
+        "team": "A full discovery session where Tamar is vague and changes her mind; then you build the real board while Ana refuses stories with no acceptance criteria and Giorgi disputes your estimates.",
+        "docs": [
+          { "name": "Requirements doc", "type": "doc" },
+          { "name": "AS-IS / TO-BE", "type": "fig" },
+          { "name": "Wireframes", "type": "fig" },
+          { "name": "ClickUp backlog", "type": "app" },
+          { "name": "Prioritised Gantt", "type": "xls" },
+          { "name": "Acceptance criteria", "type": "doc" }
+        ]
+      },
+      {
+        "label": "Week 4",
+        "title": "People & Uncertainty",
+        "learn": "The project lifecycle, stakeholder mapping, communication planning, the RACI matrix, saying no with data, and risk management.",
+        "team": "Tamar returns with new demands and a tighter deadline — some valid, some scope creep — and you push back with a RACI. Giorgi and Ana surface technical and quality risks nobody planned for.",
+        "docs": [
+          { "name": "Stakeholder map", "type": "fig" },
+          { "name": "Comms plan", "type": "doc" },
+          { "name": "RACI matrix", "type": "xls" },
+          { "name": "Change-request reply", "type": "doc" },
+          { "name": "Risk register", "type": "xls" },
+          { "name": "Mitigation plan", "type": "doc" }
+        ]
+      },
+      {
+        "label": "Week 5",
+        "title": "Contracts & Success",
+        "learn": "Build-vs-buy and procurement, RFP / SOW / NDA, compliance as a decision factor, plus product vs project metrics, KPIs and OKRs.",
+        "team": "Tamar wants a feature shipped fast and floats an external vendor; Giorgi warns of GDPR implications. Then she asks \"is this working?\" and expects real KPIs, not vanity metrics.",
+        "docs": [
+          { "name": "Build-vs-buy memo", "type": "doc" },
+          { "name": "Annotated SOW / RFP", "type": "pdf" },
+          { "name": "Compliance checklist", "type": "md" },
+          { "name": "KPI framework", "type": "xls" },
+          { "name": "Product OKRs", "type": "md" },
+          { "name": "Stakeholder report", "type": "pdf" }
+        ]
+      },
+      {
+        "label": "Week 6",
+        "title": "Shipping & Capstone",
+        "learn": "What a release actually takes, pre-launch readiness, formal closure and hand-over, and how to present the whole idea-to-launch story.",
+        "team": "Across launch you weigh Tamar's final objection, Giorgi's tech debt and Ana's last bug, then get formal sign-off. In the capstone the whole team questions your journey in character and you run the retro live.",
+        "docs": [
+          { "name": "Launch checklist", "type": "md" },
+          { "name": "Sign-off document", "type": "pdf" },
+          { "name": "Hand-over notes", "type": "doc" },
+          { "name": "Capstone deck", "type": "ppt" },
+          { "name": "Live defense + retro", "type": "app" },
+          { "name": "Final portfolio", "type": "pdf" }
+        ]
       }
     ]
   },
   "team": {
-    "label": "Your team",
-    "title": "Manage a team, gain real experience",
-    "subtitle": "From day one you manage a real team — an analyst, a designer, a developer, QA and a stakeholder.",
-    "center": "PM experience",
-    "members": [
-      {
-        "name": "Analyst",
-        "role": "Requirements",
-        "desc": "BRD, refining requirements and priorities."
-      },
-      { "name": "Designer", "role": "Design", "desc": "Mockups and the user experience." },
-      { "name": "Developer", "role": "Development", "desc": "Features and technical trade-offs." },
-      { "name": "QA", "role": "Testing", "desc": "Bugs must be caught before launch." },
-      { "name": "Stakeholder", "role": "Business", "desc": "Expectations, deadlines and sign-off." }
-    ]
-  },
-  "how": {
-    "label": "Process",
-    "title": "From idea to launch",
-    "subtitle": "A real product cycle — exactly like on the job.",
-    "assemblyLabel": "Product build",
-    "shipped": "Shipped",
-    "steps": [
-      { "step": "01", "title": "Idea", "desc": "You shape the product idea and its goal." },
-      { "step": "02", "title": "Requirements", "desc": "You approve the BRD and priorities." },
-      { "step": "03", "title": "Design", "desc": "You pick the mockup and user flow." },
-      { "step": "04", "title": "Development", "desc": "You manage tasks and the team." },
-      { "step": "05", "title": "Launch", "desc": "The product goes live." }
+    "label": "04 — The team relay",
+    "title": "You'll play every part of the handoff.",
+    "hint": "Scroll to follow the handoff",
+    "hintMobile": "Tap a role to see what they do",
+    "roles": [
+      { "name": "Analyst", "desc": "Turns a fuzzy idea into a real spec." },
+      { "name": "Designer", "desc": "Shapes the screens and how it feels." },
+      { "name": "Developer", "desc": "Writes the code that makes it run." },
+      { "name": "QA", "desc": "Breaks it before your users can." },
+      { "name": "You · PM", "desc": "Call the shots and ship it live." }
+    ],
+    "stages": [
+      "carrying: the idea",
+      "→ the spec",
+      "→ mockups",
+      "→ working code",
+      "→ tested build",
+      "✦ shipped & live"
     ]
   },
   "outcomes": {
-    "label": "Outcome",
-    "title": "In 6 weeks — a real, shipped product on your CV",
-    "subtitle": "You don't just walk away with a certificate — you keep the experience, a portfolio and a real story.",
+    "label": "05 — The payoff",
+    "title": "You leave with proof, not paper.",
+    "subtitle": "No certificate to frame. A shipped product, the artifacts behind it, and the story of how you got there.",
     "stats": [
-      { "value": 6, "suffix": "w", "label": "from idea to a live product" },
-      { "value": 1, "suffix": "×", "label": "real product shipped by you" },
-      { "value": 5, "suffix": "", "label": "AI teammates under your direction" }
+      { "value": 30, "suffix": "+", "label": "real deliverables" },
+      { "value": 100, "suffix": "%", "label": "hands on keyboard" },
+      { "value": 6, "suffix": "", "label": "weeks to a live product" }
     ],
     "portfolio": {
-      "eyebrow": "Portfolio case study",
+      "eyebrow": "your_portfolio.pdf",
       "role": "Product Manager",
-      "project": "A product I actually shipped",
+      "project": "A shipped, live product",
       "shipped": "Live"
     },
     "points": [
-      { "title": "A real portfolio", "desc": "A shipped product you can show on your CV." },
-      { "title": "PM experience", "desc": "Requirements, decisions, team, launch." },
-      { "title": "Job-ready", "desc": "You know what a real process looks like." }
+      {
+        "title": "A shipped, live product",
+        "desc": "With a URL you can hand to a recruiter, and the commit history to prove you built it."
+      },
+      {
+        "title": "30+ real deliverables",
+        "desc": "One-pager, backlog, RACI, risk register, KPIs, launch sign-off — the artifacts real PMs produce."
+      },
+      {
+        "title": "100% hands on keyboard",
+        "desc": "No passive watching. Every week you make decisions and ship the consequences."
+      }
     ]
   },
   "register": {
-    "label": "Start now",
-    "title": "Claim your spot in the next cohort",
-    "subtitle": "Register your interest — no payment required yet. We'll reach out with the details.",
+    "label": "Apply",
+    "title": "Seats are limited to keep teams real.",
+    "subtitle": "Cohort 04 caps at 25. Drop your email and we'll send the syllabus + an interview slot.",
     "fields": {
       "name": "Full name",
       "namePlaceholder": "e.g. Nino Beridze",
       "email": "Email",
-      "emailPlaceholder": "you@example.com",
+      "emailPlaceholder": "you@email.com",
       "phone": "Phone (optional)",
       "phonePlaceholder": "+995 5xx xx xx xx",
       "experience": "Experience",
@@ -137,11 +265,11 @@
       "message": "Message (optional)",
       "messagePlaceholder": "What would you like to know?"
     },
-    "submit": "Register",
+    "submit": "Apply now",
     "submitting": "Sending...",
     "success": {
-      "title": "Thank you!",
-      "body": "Your application has been received. We'll be in touch soon."
+      "title": "You're in the running!",
+      "body": "Your application has been received. We'll be in touch with the syllabus and an interview slot."
     },
     "errors": {
       "generic": "Something went wrong. Please try again.",
@@ -150,7 +278,7 @@
     }
   },
   "footer": {
-    "tagline": "The PM course where you ship a real product.",
+    "tagline": "The PM simulation where you ship a real product. Build proof, not paper.",
     "location": "codeless.ge · Tbilisi",
     "rights": "All rights reserved",
     "nav": "Navigation"

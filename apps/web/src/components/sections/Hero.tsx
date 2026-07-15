@@ -7,8 +7,11 @@ import { Mascot } from "@/components/brand/Mascot";
 import { LinkButton } from "@/components/ui/Button";
 import { usePrefersReducedMotion } from "@/lib/useMediaQuery";
 
+type HeroStat = { value: string; label: string };
+
 export function Hero() {
   const t = useTranslations("hero");
+  const stats = t.raw("stats") as HeroStat[];
   const ref = useRef<HTMLElement>(null);
   const reduced = usePrefersReducedMotion();
 
@@ -51,8 +54,11 @@ export function Hero() {
           {t("badge")}
         </motion.span>
 
-        <h1 className="max-w-4xl text-balance text-4xl font-extrabold leading-[1.3] tracking-tight sm:text-5xl md:text-6xl">
-          <span className="block pb-[0.06em] text-ink">{t("titleLine1")}</span>
+        <h1 className="max-w-4xl text-balance text-4xl font-extrabold leading-[1.15] tracking-tight sm:text-5xl md:text-6xl">
+          <span className="block pb-[0.04em] text-ink">{t("titleLine1")}</span>
+          <span className="block pb-[0.06em] text-muted line-through decoration-orange/50 decoration-[3px]">
+            {t("titleStrike")}
+          </span>
           <span className="mt-1 block text-gradient">{t("titleLine2")}</span>
         </h1>
 
@@ -67,6 +73,25 @@ export function Hero() {
           <LinkButton href="#how" size="lg" variant="outline">
             {t("ctaSecondary")}
           </LinkButton>
+        </div>
+
+        <div className="mt-16 flex flex-wrap items-start justify-center gap-x-10 gap-y-6 sm:gap-x-16">
+          {stats.map((stat, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
+              className="text-center"
+            >
+              <div className="font-display text-3xl font-extrabold text-ink sm:text-4xl">
+                {stat.value}
+              </div>
+              <div className="mt-1 max-w-[16ch] text-xs leading-snug text-muted sm:text-sm">
+                {stat.label}
+              </div>
+            </motion.div>
+          ))}
         </div>
       </motion.div>
 

@@ -21,6 +21,8 @@ const config: Config = {
         muted: "#8A96B0",
         success: "#3DDC84",
         danger: "#E23B3B",
+        // Illustration-only: the "certificate paper" sheet in the Compare shredder.
+        paper: "#ECE8DD",
         avatar: {
           green: "#3DDC84",
           blue: "#5B8DEF",
