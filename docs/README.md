@@ -16,6 +16,7 @@ docs explain the _why_ and _how_ behind the code.
 | [`redesigns/how-it-works-the-build.md`](./redesigns/how-it-works-the-build.md) | "The Build" — the idea→launch horizontal filmstrip |
 | [`redesigns/outcomes-the-payoff.md`](./redesigns/outcomes-the-payoff.md) | "The Payoff" — kinetic headline, counters, tilting CV card |
 | [`redesigns/claude-revamp.md`](./redesigns/claude-revamp.md) | Claude-design content + interactions pass (shredder, relay snake, minimal register) and the mobile immersive rework |
+| [`redesigns/team-relay-mobile-options.md`](./redesigns/team-relay-mobile-options.md) | Why the pinned relay "snake" is fragile on phones + mobile visual alternatives (vertical timeline, swipe deck, tap list) |
 
 ## Design principles shared across the redesigns
 
