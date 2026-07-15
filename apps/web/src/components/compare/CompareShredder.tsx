@@ -225,7 +225,7 @@ export function CompareShredder({ copy }: { copy: ShredderCopy }) {
       className="relative h-[220vh]"
       aria-labelledby="compare-title"
     >
-      <div className="sticky top-0 flex h-screen flex-col items-center justify-center overflow-hidden bg-navy-950 px-5">
+      <div className="sticky top-0 flex h-[100svh] flex-col items-center justify-center overflow-hidden bg-navy-950 px-5">
         <canvas ref={canvasRef} aria-hidden className="pointer-events-none absolute inset-0 z-10 h-full w-full" />
 
         <div className="relative z-20 flex w-full max-w-[520px] flex-col items-center">

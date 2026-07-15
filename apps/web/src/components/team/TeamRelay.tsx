@@ -148,7 +148,7 @@ export function TeamRelay({
 
   return (
     <section id="team" ref={rootRef} className="relative h-[340vh]">
-      <div className="sticky top-0 h-screen overflow-hidden">
+      <div className="sticky top-0 h-[100svh] overflow-hidden">
         <div className="relative z-30 px-5 pt-[clamp(28px,6vh,60px)] text-center">
           <div className="mb-3 font-mono text-xs uppercase tracking-[0.16em] text-orange">
             {label}
@@ -167,7 +167,7 @@ export function TeamRelay({
         <div
           className={`absolute inset-x-0 ${
             narrow
-              ? "bottom-[6vh] top-[clamp(118px,15vh,170px)]"
+              ? "bottom-[6svh] top-[clamp(118px,15svh,170px)]"
               : "bottom-[13vh] top-[clamp(140px,20vh,220px)]"
           }`}
         >
