@@ -11,6 +11,11 @@ const TeamRelay = dynamic(
   { ssr: false },
 );
 
+const TeamRelayMobile = dynamic(
+  () => import("@/components/team/TeamRelayMobile").then((m) => m.TeamRelayMobile),
+  { ssr: false },
+);
+
 export function Team() {
   const t = useTranslations("team");
   const roles = t.raw("roles") as RelayRole[];
@@ -19,10 +24,15 @@ export function Team() {
 
   const shared = { label: t("label"), title: t("title"), hint: t("hint"), roles };
 
-  // Reduced-motion / no-WebGL gets the accessible vertical fallback. Everyone else
-  // (mobile included, like the Claude prototype) gets the full scroll-driven snake.
+  // Reduced-motion / no-WebGL gets the accessible static timeline.
   if (tier === "static") {
-    return <TeamRelayStatic {...shared} hint={t("hintMobile")} />;
+    return <TeamRelayStatic {...shared} stages={stages} />;
+  }
+
+  // Touch / small screens get the scroll-revealed vertical timeline; the pinned
+  // scroll-scrubbed snake is desktop-only.
+  if (tier === "lite") {
+    return <TeamRelayMobile {...shared} stages={stages} />;
   }
 
   return <TeamRelay {...shared} stages={stages} />;
